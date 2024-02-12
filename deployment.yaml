@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webclient
+  namespace: default
+  labels:
+    app: webclient
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webclient
+  template:
+    metadata:
+      labels:
+        app: webclient
+    spec:
+      containers:
+        - name: webclient
+          image: localhost:5000/webclient:99
+          imagePullPolicy: IfNotPresent
